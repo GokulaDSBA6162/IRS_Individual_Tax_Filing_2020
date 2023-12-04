@@ -8,8 +8,8 @@ pip.main(["install", "openpyxl"])
 df = pd.read_csv('20incyall - 1024 - Project.csv')
 
 st.dataframe(df)
-
-st.write(***IRS***)
+  
+st.write('IRS')
 
 st.map(df,
     latitude='Latitude',
