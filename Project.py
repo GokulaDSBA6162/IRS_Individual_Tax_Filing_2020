@@ -15,6 +15,8 @@ def main():
 pip.main(["install", "openpyxl"])
 df = pd.read_csv('20incyall - 1024 - Project.csv')
 
+df = df[(df['State']) == ]
+
 
 
 st.write(df.shape)
