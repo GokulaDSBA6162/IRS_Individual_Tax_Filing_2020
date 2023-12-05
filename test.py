@@ -7,9 +7,11 @@ pip.main(["install", "openpyxl"])
 
 df = pd.read_csv('20incyall - 1024 - Project.csv')
 
+st.write('IRS Data')
+
 st.dataframe(df)
   
-st.write('IRS')
+st.write('Trying to plot the map')
 
 st.map(df,
     latitude='Latitude',
