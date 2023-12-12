@@ -1,8 +1,5 @@
 import streamlit as st
-import numpy as np
 import pandas as pd
-import pip
-import plotly.express as px
 import folium
 from streamlit_folium import st_folium
 import altair as alt
