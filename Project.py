@@ -26,7 +26,8 @@ st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allo
 #     return df
 
 # Assuming you have a CSV file locally
-df = load_data('data/20incyall - 1024 - STProject.csv')
+#df = load_data('data/20incyall - 1024 - STProject.csv')
+df = pd.read_csv('data/20incyall - 1024 - STProject.csv')
 
 #Create Sidebar for State and County Selection
 
