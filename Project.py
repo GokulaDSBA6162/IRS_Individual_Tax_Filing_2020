@@ -92,7 +92,9 @@ with col5:
     st.write(f"{hh:,}")
     st.write(f"{percent_j:,.2f}%")
 
-tab1,tab2 = st.tabs(["STATEWISE TAX INCOME DATA", "COMPARE INCOME TAX FACTS"])
+#tab1,tab2 = st.tabs(["STATEWISE TAX INCOME DATA", "COMPARE INCOME TAX FACTS"])
+
+tab1, tab2 = st.tabs(["STATEWISE TAX INCOME DATA", "COMPARE INCOME TAX FACTS"])
 with tab1:
 
     #Code to display map
