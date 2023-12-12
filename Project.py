@@ -92,7 +92,7 @@ with col5:
     st.write(f"{hh:,}")
     st.write(f"{percent_j:,.2f}%")
 
-# tab1, tab2 = st.tabs(["STATEWISE TAX INCOME DATA", "COMPARE INCOME TAX FACTS"])
+tab1, tab2 = st.tabs(["STATEWISE TAX INCOME DATA", "COMPARE INCOME TAX FACTS"])
 
 # with tab1:
 
@@ -187,55 +187,55 @@ with col5:
     # Display the chart
     (freq_chart + freq_text)
 
-# # with tab2:
+# with tab2:
     
-#     tab2_state_agg= filtered_df.groupby(['StateName'], as_index=False).aggregate({'Number of single returns':'sum','Number of joint returns':'sum',
-#                                                                                       'Number of head of household returns':'sum', 
-#                                                                                       'Total income in Amount':'sum',
-#                                                                                       'Total income in Number of returns':'sum',
-#                                                                                       'Number of  farm returns':'sum',
-#                                                                                       'Total itemized deductions in Number of returns':'sum',
-#                                                                                       'Residential energy tax credit in Number of returns':'sum'})
-#     tab2_state_agg.rename(columns={'Residential energy tax credit in Number of returns': 'Residential energy tax credit'}, inplace=True)
-#     tab2_state_agg2= filtered_df.groupby(['StateName', 'County name'], as_index=False).aggregate({'Number of single returns':'sum','Number of joint returns':'sum',
-#                                                                                     'Number of head of household returns':'sum', 
-#                                                                                     'Total income in Amount':'sum',
-#                                                                                     'Total income in Number of returns':'sum',
-#                                                                                     'Number of  farm returns':'sum',
-#                                                                                     'Total itemized deductions in Number of returns':'sum',
-#                                                                                     'Residential energy tax credit in Number of returns':'sum'})
-#     tab2_state_agg2.rename(columns={'Residential energy tax credit in Number of returns': 'Residential energy tax credit'}, inplace=True)
+    tab2_state_agg= filtered_df.groupby(['StateName'], as_index=False).aggregate({'Number of single returns':'sum','Number of joint returns':'sum',
+                                                                                      'Number of head of household returns':'sum', 
+                                                                                      'Total income in Amount':'sum',
+                                                                                      'Total income in Number of returns':'sum',
+                                                                                      'Number of  farm returns':'sum',
+                                                                                      'Total itemized deductions in Number of returns':'sum',
+                                                                                      'Residential energy tax credit in Number of returns':'sum'})
+    tab2_state_agg.rename(columns={'Residential energy tax credit in Number of returns': 'Residential energy tax credit'}, inplace=True)
+    tab2_state_agg2= filtered_df.groupby(['StateName', 'County name'], as_index=False).aggregate({'Number of single returns':'sum','Number of joint returns':'sum',
+                                                                                    'Number of head of household returns':'sum', 
+                                                                                    'Total income in Amount':'sum',
+                                                                                    'Total income in Number of returns':'sum',
+                                                                                    'Number of  farm returns':'sum',
+                                                                                    'Total itemized deductions in Number of returns':'sum',
+                                                                                    'Residential energy tax credit in Number of returns':'sum'})
+    tab2_state_agg2.rename(columns={'Residential energy tax credit in Number of returns': 'Residential energy tax credit'}, inplace=True)
 
     
-#     st.header("Select a State and/or County from the sidebar to compare the facts on the scatterplot.")
+    st.header("Select a State and/or County from the sidebar to compare the facts on the scatterplot.")
 
-#     st.markdown(
-#     "*This view empowers users to select and compare states, exploring various tax statistics. The comparison feature allows users to understand the standing of different states and counties based on the chosen tax factor. For instance, users interested in discovering which state received Residential Energy Tax Credits in 2022 can make that selection to gather relevant insights.*\n"
-#     )
+    st.markdown(
+    "*This view empowers users to select and compare states, exploring various tax statistics. The comparison feature allows users to understand the standing of different states and counties based on the chosen tax factor. For instance, users interested in discovering which state received Residential Energy Tax Credits in 2022 can make that selection to gather relevant insights.*\n"
+    )
 
-#     st.markdown(
-#     "***Note: While all tax facts provide information about returns, only 'Total Income' reflects the corresponding dollar amounts.***\n"
-# )   
+    st.markdown(
+    "***Note: While all tax facts provide information about returns, only 'Total Income' reflects the corresponding dollar amounts.***\n"
+)   
 
-#     x_val = st.selectbox("Pick your x-axis fact",tab2_state_agg2.columns.drop(['StateName','County name']).tolist())
-#     y_val = st.selectbox("Pick your y-axis fact",tab2_state_agg2.columns.drop(['StateName','County name']).tolist())
+    x_val = st.selectbox("Pick your x-axis fact",tab2_state_agg2.columns.drop(['StateName','County name']).tolist())
+    y_val = st.selectbox("Pick your y-axis fact",tab2_state_agg2.columns.drop(['StateName','County name']).tolist())
 
-#     if not county:
-#         scatter = alt.Chart(tab2_state_agg, title=f"{x_val} and {y_val}").mark_point().encode(
-#         alt.X(x_val,title=f'{x_val}'),
-#         alt.Y(y_val,title=f'{y_val}'),
-#         tooltip=['StateName','Total income in Amount',x_val, y_val], size = 'Total income in Amount').configure_mark(
-#         opacity=0.5,
-#         color='blue')
-#         st.altair_chart(scatter, use_container_width=True)
-#     else:
-#         scatter = alt.Chart(tab2_state_agg2, title=f"{x_val} and {y_val}").mark_point().encode(
-#         alt.X(x_val,title=f'{x_val}'),
-#         alt.Y(y_val,title=f'{y_val}'),
-#         tooltip=['StateName','County name','Total income in Amount',x_val, y_val], size = 'Total income in Amount').configure_mark(
-#         opacity=0.5,
-#         color='StateName')
-#         st.altair_chart(scatter, use_container_width=True)
+    if not county:
+        scatter = alt.Chart(tab2_state_agg, title=f"{x_val} and {y_val}").mark_point().encode(
+        alt.X(x_val,title=f'{x_val}'),
+        alt.Y(y_val,title=f'{y_val}'),
+        tooltip=['StateName','Total income in Amount',x_val, y_val], size = 'Total income in Amount').configure_mark(
+        opacity=0.5,
+        color='blue')
+        st.altair_chart(scatter, use_container_width=True)
+    else:
+        scatter = alt.Chart(tab2_state_agg2, title=f"{x_val} and {y_val}").mark_point().encode(
+        alt.X(x_val,title=f'{x_val}'),
+        alt.Y(y_val,title=f'{y_val}'),
+        tooltip=['StateName','County name','Total income in Amount',x_val, y_val], size = 'Total income in Amount').configure_mark(
+        opacity=0.5,
+        color='StateName')
+        st.altair_chart(scatter, use_container_width=True)
 
-#     st.dataframe(tab2_state_agg2)
+    st.dataframe(tab2_state_agg2)
 
