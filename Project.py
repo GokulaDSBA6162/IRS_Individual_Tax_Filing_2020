@@ -228,7 +228,7 @@ with col5:
         tooltip=['StateName','Total income in Amount',x_val, y_val], size = 'Total income in Amount').configure_mark(
         opacity=0.5,
         color='blue')
-        st.altair_chart(scatter, theme="streamlit", use_container_width=True)
+        st.altair_chart(scatter, use_container_width=True)
     else:
         scatter = alt.Chart(tab2_state_agg2, title=f"{x_val} and {y_val}").mark_point().encode(
         alt.X(x_val,title=f'{x_val}'),
@@ -236,7 +236,7 @@ with col5:
         tooltip=['StateName','County name','Total income in Amount',x_val, y_val], size = 'Total income in Amount').configure_mark(
         opacity=0.5,
         color='StateName')
-        st.altair_chart(scatter, theme="streamlit", use_container_width=True)
+        st.altair_chart(scatter, use_container_width=True)
 
     st.dataframe(tab2_state_agg2)
 
