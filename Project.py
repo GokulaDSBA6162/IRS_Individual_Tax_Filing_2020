@@ -14,7 +14,7 @@ st.title(APP_TITLE)
 st.markdown(
     "*This section presents the following facts based on the chosen State and/or County:*\n"
 )
-st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
+st.markdown('<style>div.block-container{padding-top:1rem;}</style>')
 
 # #Load IRS Data
 # pip.main(["install", "openpyxl"])
