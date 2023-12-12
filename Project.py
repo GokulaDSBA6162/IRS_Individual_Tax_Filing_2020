@@ -9,7 +9,7 @@ import altair as alt
 APP_TITLE = "IRS INDIVIDUAL TAX FILING - 2020"
 APP_SUB_TITLE = "STATEWISE/COUNTYWISE INCOME"
 
-st.set_page_config(APP_TITLE, layout="wide")
+st.set_page_config(APP_TITLE)
 st.title(APP_TITLE)
 st.markdown(
     "*This section presents the following facts based on the chosen State and/or County:*\n"
