@@ -20,10 +20,10 @@ st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allo
 # pip.main(["install", "openpyxl"])
 # df = pd.read_csv('data/20incyall - 1024 - STProject.csv')
 
-@st.cache_data
-def load_data(url):
-    df = pd.read_csv(url)
-    return df
+# @st.cache_data
+# def load_data(url):
+#     df = pd.read_csv(url)
+#     return df
 
 # Assuming you have a CSV file locally
 df = load_data('data/20incyall - 1024 - STProject.csv')
