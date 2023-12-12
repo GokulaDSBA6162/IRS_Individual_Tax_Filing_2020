@@ -1,2 +1,9 @@
 streamlit
-
+numpy
+pandas
+pip
+plotly.express
+folium
+streamlit_folium 
+st_folium
+altair
