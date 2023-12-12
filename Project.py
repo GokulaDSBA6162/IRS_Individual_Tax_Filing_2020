@@ -96,96 +96,96 @@ tab1, tab2 = st.tabs(["STATEWISE TAX INCOME DATA", "COMPARE INCOME TAX FACTS"])
 
 # with tab1:
 
-    #Code to display map
-    st.markdown(
-    "***In this view, users of this application can explore visualizations for the selected states to understand which states generate higher tax income. The map highlights the highest tax-paying states in darker colors and the least tax-paying states in lighter colors. The bar charts default to displaying the Top 10 and Bottom 10 states in terms of Individual Income Tax of 2020. When a multi-select state filter is applied, it shows the Top and Bottom states based on the selection.***\n"
-    )
+#Code to display map
+st.markdown(
+"***In this view, users of this application can explore visualizations for the selected states to understand which states generate higher tax income. The map highlights the highest tax-paying states in darker colors and the least tax-paying states in lighter colors. The bar charts default to displaying the Top 10 and Bottom 10 states in terms of Individual Income Tax of 2020. When a multi-select state filter is applied, it shows the Top and Bottom states based on the selection.***\n"
+)
 
-    state_agg= filtered_df.groupby(['StateName', 'State'], as_index=False).aggregate({'Number of single returns':'sum','Number of joint returns':'sum','Number of head of household returns':'sum', 'Total income in Amount':'sum'})
+state_agg= filtered_df.groupby(['StateName', 'State'], as_index=False).aggregate({'Number of single returns':'sum','Number of joint returns':'sum','Number of head of household returns':'sum', 'Total income in Amount':'sum'})
 
-    map = folium.Map(location=[38, -96.5], zoom_start=4, scrollWheelZoom=False, tiles='CartoDB positron')
-   
-    choropleth = folium.Choropleth(
-        geo_data='data/us-state-boundaries.geojson',
-        data=state_agg,
-        columns=('State', 'Total income in Amount'),
-        key_on='feature.properties.stusab',
-        line_opacity=0.8,
-        highlight=True
-    )
-    choropleth.geojson.add_to(map)
+map = folium.Map(location=[38, -96.5], zoom_start=4, scrollWheelZoom=False, tiles='CartoDB positron')
 
-    choropleth.geojson.add_child(
-        folium.features.GeoJsonTooltip(['name'],labels=False)
-    )
+choropleth = folium.Choropleth(
+    geo_data='data/us-state-boundaries.geojson',
+    data=state_agg,
+    columns=('State', 'Total income in Amount'),
+    key_on='feature.properties.stusab',
+    line_opacity=0.8,
+    highlight=True
+)
+choropleth.geojson.add_to(map)
 
-    st_map = st_folium(map, width=1400, height=700)
-    
-    #Code to display chart of Top 10
+choropleth.geojson.add_child(
+    folium.features.GeoJsonTooltip(['name'],labels=False)
+)
 
-    fact_df= filtered_df.groupby(['StateName', 'State'], as_index=False).aggregate({'Number of single returns':'sum','Number of joint returns':'sum','Number of head of household returns':'sum', 'Total income in Amount':'sum'})
+st_map = st_folium(map, width=1400, height=700)
 
-    st.subheader("Top 10 Highest Tax Paying States")
-    # Create a rank column based on total income
-    fact_df['Rank'] = fact_df['Total income in Amount'].rank(ascending=False)
+#Code to display chart of Top 10
 
-    # Filter the data to include only the top 10 ranks
-    top_10_df = fact_df[fact_df['Rank'] <= 10]
+fact_df= filtered_df.groupby(['StateName', 'State'], as_index=False).aggregate({'Number of single returns':'sum','Number of joint returns':'sum','Number of head of household returns':'sum', 'Total income in Amount':'sum'})
 
-    # Create the Altair chart
-    freq_chart = alt.Chart(top_10_df).mark_bar().encode(
-        y=alt.Y('StateName:N', title="State", sort=alt.EncodingSortField('Total income in Amount', op='min', order='descending')),
-        x=alt.X('Total income in Amount:Q', axis=alt.Axis(grid=False)),
-    ).properties(
-        height=400,
-        width=800
-    )
+st.subheader("Top 10 Highest Tax Paying States")
+# Create a rank column based on total income
+fact_df['Rank'] = fact_df['Total income in Amount'].rank(ascending=False)
 
-    freq_text = freq_chart.mark_text(
-        align='left',
-        baseline='middle',
-        dx=3
-    ).encode(
-        text=alt.Text('Total income in Amount:Q', format='.0f')
-    ).properties(
-        height=400,
-        width=800
-    )
+# Filter the data to include only the top 10 ranks
+top_10_df = fact_df[fact_df['Rank'] <= 10]
 
-    # Display the chart
-    (freq_chart + freq_text)
+# Create the Altair chart
+freq_chart = alt.Chart(top_10_df).mark_bar().encode(
+    y=alt.Y('StateName:N', title="State", sort=alt.EncodingSortField('Total income in Amount', op='min', order='descending')),
+    x=alt.X('Total income in Amount:Q', axis=alt.Axis(grid=False)),
+).properties(
+    height=400,
+    width=800
+)
 
-    #Code to display chart of lowest 10
+freq_text = freq_chart.mark_text(
+    align='left',
+    baseline='middle',
+    dx=3
+).encode(
+    text=alt.Text('Total income in Amount:Q', format='.0f')
+).properties(
+    height=400,
+    width=800
+)
 
-    st.subheader("Lowest Tax Paying States")
-    # Create a rank column based on total income
-    fact_df['Rank'] = fact_df['Total income in Amount'].rank(ascending=True)
+# Display the chart
+(freq_chart + freq_text)
 
-    # Filter the data to include only the bottom 10 ranks
-    bottom_10_df = fact_df[fact_df['Rank'] <= 10]
+#Code to display chart of lowest 10
 
-    # Create the Altair chart
-    freq_chart = alt.Chart(bottom_10_df).mark_bar().encode(
-        y=alt.Y('StateName:N', title="State", sort=alt.EncodingSortField('Total income in Amount', op='min', order='ascending')),
-        x=alt.X('Total income in Amount:Q', axis=alt.Axis(grid=False)),
-    ).properties(
-        height=400,
-        width=800
-    )
+st.subheader("Lowest Tax Paying States")
+# Create a rank column based on total income
+fact_df['Rank'] = fact_df['Total income in Amount'].rank(ascending=True)
 
-    freq_text = freq_chart.mark_text(
-        align='left',
-        baseline='middle',
-        dx=3
-    ).encode(
-        text=alt.Text('Total income in Amount:Q', format='.0f')
-    ).properties(
-        height=400,
-        width=800
-    )
+# Filter the data to include only the bottom 10 ranks
+bottom_10_df = fact_df[fact_df['Rank'] <= 10]
 
-    # Display the chart
-    (freq_chart + freq_text)
+# Create the Altair chart
+freq_chart = alt.Chart(bottom_10_df).mark_bar().encode(
+    y=alt.Y('StateName:N', title="State", sort=alt.EncodingSortField('Total income in Amount', op='min', order='ascending')),
+    x=alt.X('Total income in Amount:Q', axis=alt.Axis(grid=False)),
+).properties(
+    height=400,
+    width=800
+)
+
+freq_text = freq_chart.mark_text(
+    align='left',
+    baseline='middle',
+    dx=3
+).encode(
+    text=alt.Text('Total income in Amount:Q', format='.0f')
+).properties(
+    height=400,
+    width=800
+)
+
+# Display the chart
+(freq_chart + freq_text)
 
 # with tab2:
     
