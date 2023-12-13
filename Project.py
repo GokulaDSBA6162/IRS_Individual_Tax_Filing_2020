@@ -121,11 +121,14 @@ with tab1:
 
     st_map = st_folium(map, width=1200, height=500)
 
-    #Code to display chart of Top 10
+    #Code to display bar chart based on selection
+    st.markdown(
+    "***In this view, users of this application can explore visualizations for the selected states to understand which states generate higher tax income. The map highlights the highest tax-paying states in darker colors and the least tax-paying states in lighter colors. The bar charts default to displaying the Top 10 and Bottom 10 states in terms of Individual Income Tax of 2020. When a multi-select state filter is applied, it shows the Top and Bottom states based on the selection.***\n"
+    )
 
     fact_df= filtered_df.groupby(['StateName', 'State'], as_index=False).aggregate({'Number of single returns':'sum','Number of joint returns':'sum','Number of head of household returns':'sum', 'Total income in Amount':'sum'})
 
-    st.subheader("Top 10 Highest Tax Paying States")
+    st.subheader("Highest Tax Paying States")
     # Create a rank column based on total income
     fact_df['Rank'] = fact_df['Total income in Amount'].rank(ascending=False)
 
@@ -159,13 +162,13 @@ with tab1:
 
     st.subheader("Lowest Tax Paying States")
     # Create a rank column based on total income
-    fact_df['Rank'] = fact_df['Total income in Amount'].rank(ascending=True)
+    fact_df2['Rank'] = fact_df['Total income in Amount'].rank(ascending=True)
 
     # Filter the data to include only the bottom 10 ranks
     bottom_10_df = fact_df[fact_df['Rank'] <= 10]
 
     # Create the Altair chart
-    freq_chart = alt.Chart(bottom_10_df).mark_bar().encode(
+    freq_chart2 = alt.Chart(bottom_10_df).mark_bar().encode(
         y=alt.Y('StateName:N', title="State", sort=alt.EncodingSortField('Total income in Amount', op='min', order='ascending')),
         x=alt.X('Total income in Amount:Q', axis=alt.Axis(grid=False)),
     ).properties(
@@ -173,7 +176,7 @@ with tab1:
         width=800
     )
 
-    freq_text = freq_chart.mark_text(
+    freq_text2 = freq_chart.mark_text(
         align='left',
         baseline='middle',
         dx=3
@@ -183,9 +186,11 @@ with tab1:
         height=400,
         width=800
     )
-
-    # Display the chart
-    (freq_chart + freq_text)
+    if not state and not county:
+        # Display the chart
+        (freq_chart2 + freq_text2)
+    else:
+        ""
 
 with tab2:
     
