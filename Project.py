@@ -168,7 +168,7 @@ with tab1:
     bottom_10_df = fact_df[fact_df['Rank'] <= 10]
 
     # Create the Altair chart
-    freq_chart2 = alt.Chart(bottom_10_df).mark_bar().encode(
+    freq_chart = alt.Chart(bottom_10_df).mark_bar().encode(
         y=alt.Y('StateName:N', title="State", sort=alt.EncodingSortField('Total income in Amount', op='min', order='ascending')),
         x=alt.X('Total income in Amount:Q', axis=alt.Axis(grid=False)),
     ).properties(
@@ -176,7 +176,7 @@ with tab1:
         width=800
     )
 
-    freq_text2 = freq_chart.mark_text(
+    freq_text = freq_chart.mark_text(
         align='left',
         baseline='middle',
         dx=3
@@ -188,7 +188,8 @@ with tab1:
     )
     if not state and not county:
         # Display the chart
-        (freq_chart2 + freq_text2)
+        st.subheader("Lowest Tax Paying States")
+        (freq_chart + freq_text)
     else:
         ""
 
