@@ -32,13 +32,8 @@ For the map visualization, I used the geopy.geocoders module to get the latitude
 For the purpose of this project, I have focused on a select set of data points as highlighted below. However, it's important to note that the dataset contains a wealth of additional information that can be leveraged to address a broader range of inquiries and objectives.
 
 Referenced the following streamlit apps to create mine:
-https://www.youtube.com/watch?v=uXj76K9Lnqc
 
-https://github.com/liammaxwell24/dsba_5122_final_project
-
-Some designs from here: https://www.youtube.com/watch?v=7yAw1nPareM&t=113s
-
-Some with the help of ChatGPT.
+https://www.youtube.com/watch?v=uXj76K9Lnqc; https://github.com/liammaxwell24/dsba_5122_final_project; Some designs from here: https://www.youtube.com/watch?v=7yAw1nPareM&t=113s; Some with the help of ChatGPT.
 
 
 # Future Work:
