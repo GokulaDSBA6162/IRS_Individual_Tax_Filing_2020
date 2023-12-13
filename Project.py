@@ -6,7 +6,7 @@ import altair as alt
 
 #set the required titles
 
-APP_TITLE = "IRS INDIVIDUAL TAX FILING - 2020"
+APP_TITLE = "IRS INDIVIDUAL INCOME TAX FILING - 2020"
 APP_SUB_TITLE = "STATEWISE/COUNTYWISE INCOME"
 
 st.set_page_config(APP_TITLE, layout="wide")
