@@ -162,7 +162,7 @@ with tab1:
 
     st.subheader("Lowest Tax Paying States")
     # Create a rank column based on total income
-    fact_df2['Rank'] = fact_df['Total income in Amount'].rank(ascending=True)
+    fact_df['Rank'] = fact_df['Total income in Amount'].rank(ascending=True)
 
     # Filter the data to include only the bottom 10 ranks
     bottom_10_df = fact_df[fact_df['Rank'] <= 10]
