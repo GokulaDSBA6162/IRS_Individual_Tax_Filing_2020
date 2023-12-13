@@ -123,7 +123,7 @@ with tab1:
 
     #Code to display bar chart based on selection
     st.markdown(
-    "***In this view, users of this application can explore visualizations for the selected states to understand which states generate higher tax income. The map highlights the highest tax-paying states in darker colors and the least tax-paying states in lighter colors. The bar charts default to displaying the Top 10 and Bottom 10 states in terms of Individual Income Tax of 2020. When a multi-select state filter is applied, it shows the Top and Bottom states based on the selection.***\n"
+    "***The default presentation of the bar charts is to exhibit the Top 10 states with the highest and lowest tax payments. However, upon making any selection on the sidebar, the lower bar chart disappears to avoid displaying redundant information.***\n"
     )
 
     fact_df= filtered_df.groupby(['StateName', 'State'], as_index=False).aggregate({'Number of single returns':'sum','Number of joint returns':'sum','Number of head of household returns':'sum', 'Total income in Amount':'sum'})
