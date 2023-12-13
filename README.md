@@ -19,6 +19,18 @@ State Economic Trends: Analyze statewise tax data to identify economic trends an
 
 Decision Support for Entrepreneurs: For entrepreneurs and small business owners, analyze state tax data to provide insights into business-related taxes, credits, and deductions. Support decision-making related to business location and operations.
 
+## Use Case
+This streamlit application can be used to learn about IRS Individual Income revenue among different states in varios aspects like income, deductions, tax credits. 
+
+## App Features
+- Analyze which States and counties brings in the highest or lowest tax revenues.
+- Compare the States and counties on their standing on different tax categories like how many 
+    - Single returns filed
+    - Joint returns filed
+    - Head of Household returns filed
+    - Farm returns files
+    - Tax deductions & Credits 
+    
 # Data Preparation and Design Implementation:
 The data required for this project is collected from this site - https://www.irs.gov/statistics/soi-tax-stats-county-data-2020. The raw data required very few data cleanup like:
 
@@ -39,18 +51,6 @@ Analyzing tax-related data geographically through maps can uncover regional vari
 Explore and integrate more variables from the dataset to gain valuable insights. This may encompass factors such as deductions, credits, or specific sources of income.
 
 Create visualizations illustrating trends over time. This involves scrutinizing alterations in income, deductions, or tax credits over various years or periods.
-
-## Use Case
-This streamlit application can be used to learn about IRS Individual Income revenue among different states in varios aspects like income, deductions, tax credits. 
-
-## App Features
-- Analyze which States and counties brings in the highest or lowest tax revenues.
-- Compare the States and counties on their standing on different tax categories like how many 
-    - Single returns filed
-    - Joint returns filed
-    - Head of Household returns filed
-    - Farm returns files
-    - Tax deductions & Credits 
 
 ## References
 Referenced the following streamlit apps to create mine:
