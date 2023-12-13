@@ -160,7 +160,6 @@ with tab1:
 
     #Code to display chart of lowest 10
 
-    st.subheader("Lowest Tax Paying States")
     # Create a rank column based on total income
     fact_df['Rank'] = fact_df['Total income in Amount'].rank(ascending=True)
 
