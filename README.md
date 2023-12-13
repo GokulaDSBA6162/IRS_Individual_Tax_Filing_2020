@@ -22,19 +22,15 @@ Decision Support for Entrepreneurs: For entrepreneurs and small business owners,
 # Data Preparation and Design Implementation:
 The data required for this project is collected from this site - https://www.irs.gov/statistics/soi-tax-stats-county-data-2020. The raw data required very few data cleanup like:
 
--Converting the datatypes from object to int or float or string as required.
--Converted the State name abbreviations into State Names
+- Converting the datatypes from object to int or float or string as required
+- Converted from geocoded POINT variable to latitude and longitude columns
+- Converted the State name abbreviations into State Names
 
 The dataset contain no missing data or invalid data.
 
 For the map visualization, I used the geopy.geocoders module to get the latitude and longitude based on the county names. And added those values in the dataset. But I did not use the latitude and longitude values to plot the map instead i used Folium library to create choropleth map. 
 
 For the purpose of this project, I have focused on a select set of data points as highlighted below. However, it's important to note that the dataset contains a wealth of additional information that can be leveraged to address a broader range of inquiries and objectives.
-
-Referenced the following streamlit apps to create mine:
-
-https://www.youtube.com/watch?v=uXj76K9Lnqc; https://github.com/liammaxwell24/dsba_5122_final_project; Some designs from here: https://www.youtube.com/watch?v=7yAw1nPareM&t=113s; Some with the help of ChatGPT.
-
 
 # Future Work:
 
@@ -43,3 +39,21 @@ Analyzing tax-related data geographically through maps can uncover regional vari
 Explore and integrate more variables from the dataset to gain valuable insights. This may encompass factors such as deductions, credits, or specific sources of income.
 
 Create visualizations illustrating trends over time. This involves scrutinizing alterations in income, deductions, or tax credits over various years or periods.
+
+## Use Case
+This streamlit application can be used to learn about IRS Individual Income revenue among different states in varios aspects like income, deductions, tax credits. 
+
+## App Features
+- Analyze which States and counties brings in the highest or lowest tax revenues.
+- Compare the States and counties on their standing on different tax categories like how many 
+    - Single returns filed
+    - Joint returns filed
+    - Head of Household returns filed
+    - Farm returns files
+    - Tax deductions & Credits 
+
+## References
+Referenced the following streamlit apps to create mine:
+1. https://www.youtube.com/watch?v=uXj76K9Lnqc
+2. https://github.com/liammaxwell24/dsba_5122_final_project
+3. Some designs from here: https://www.youtube.com/watch?v=7yAw1nPareM&t=113s

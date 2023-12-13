@@ -200,7 +200,10 @@ with tab2:
                                                                                         'Total income in Number of returns':'sum',
                                                                                         'Number of  farm returns':'sum',
                                                                                         'Total itemized deductions in Number of returns':'sum',
-                                                                                        'Residential energy tax credit in Number of returns':'sum'})
+                                                                                        'Residential energy tax credit in Number of returns':'sum',
+                                                                                        'Unemployment compensation (9) in Number of returns':'sum',
+                                                                                        'Student loan interest deduction in Number of returns':'sum',
+                                                                                        'Child and dependent care credit in Number of returns':'sum'})
     tab2_state_agg.rename(columns={'Residential energy tax credit in Number of returns': 'Residential energy tax credit'}, inplace=True)
     tab2_state_agg2= filtered_df.groupby(['StateName', 'County name'], as_index=False).aggregate({'Number of single returns':'sum','Number of joint returns':'sum',
                                                                                     'Number of head of household returns':'sum', 
@@ -208,8 +211,14 @@ with tab2:
                                                                                     'Total income in Number of returns':'sum',
                                                                                     'Number of  farm returns':'sum',
                                                                                     'Total itemized deductions in Number of returns':'sum',
-                                                                                    'Residential energy tax credit in Number of returns':'sum'})
-    tab2_state_agg2.rename(columns={'Residential energy tax credit in Number of returns': 'Residential energy tax credit'}, inplace=True)
+                                                                                    'Residential energy tax credit in Number of returns':'sum',
+                                                                                    'Unemployment compensation (9) in Number of returns':'sum',
+                                                                                    'Student loan interest deduction in Number of returns':'sum',
+                                                                                    'Child and dependent care credit in Number of returns':'sum'})
+    tab2_state_agg2.rename(columns={'Residential energy tax credit in Number of returns': 'Residential energy tax credit', 
+                                    'Unemployment compensation (9) in Number of returns':'Unemployment compensation', 
+                                    'Student loan interest deduction in Number of returns':'Student loan interest deduction',
+                                    'Child and dependent care credit in Number of returns':'Child and dependent care credit'}, inplace=True)
 
 
     st.header("Select a State and/or County from the sidebar to compare the facts on the scatterplot.")
