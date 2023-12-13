@@ -33,8 +33,11 @@ For the purpose of this project, I have focused on a select set of data points a
 
 Referenced the following streamlit apps to create mine:
 https://www.youtube.com/watch?v=uXj76K9Lnqc
+
 https://github.com/liammaxwell24/dsba_5122_final_project
+
 Some designs from here: https://www.youtube.com/watch?v=7yAw1nPareM&t=113s
+
 Some with the help of ChatGPT.
 
 
